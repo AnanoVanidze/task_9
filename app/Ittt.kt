@@ -1,0 +1,1 @@
+class Ittt : ArrayList<ItttItem>()
