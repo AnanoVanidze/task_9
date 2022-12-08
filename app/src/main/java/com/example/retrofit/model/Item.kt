@@ -1,57 +1,40 @@
 package com.example.retrofit.model
 
 
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "item_table")
 data class Item(
-    @SerializedName("abs")
-    val abs: Int,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
     @SerializedName("active")
-    val active: Boolean,
-    @SerializedName("attempted_catches")
-    val attemptedCatches: Int,
-    @SerializedName("attempted_landings")
-    val attemptedLandings: Int,
+    val active: Boolean?,
     @SerializedName("class")
-    val classX: Int,
-    @SerializedName("course_deg")
-    val courseDeg: Any,
+    val classX: Int?,
     @SerializedName("home_port")
-    val homePort: String,
+    val homePort: String?,
     @SerializedName("image")
-    val image: String,
-    @SerializedName("imo")
-    val imo: Int,
+    val image: String?,
     @SerializedName("missions")
-    val missions: List<Mission>,
-    @SerializedName("mmsi")
-    val mmsi: Int,
+    val missions: ArrayList<Mission>,
     @SerializedName("position")
     val position: Position,
     @SerializedName("roles")
-    val roles: List<String>,
+    val roles: ArrayList<String>,
     @SerializedName("ship_id")
-    val shipId: String,
+    val shipId: String?,
     @SerializedName("ship_model")
-    val shipModel: String,
+    val shipModel: String?,
     @SerializedName("ship_name")
-    val shipName: String,
+    val shipName: String?,
     @SerializedName("ship_type")
-    val shipType: String,
-    @SerializedName("speed_kn")
-    val speedKn: Any,
-    @SerializedName("status")
-    val status: String,
-    @SerializedName("successful_catches")
-    val successfulCatches: Int,
-    @SerializedName("successful_landings")
-    val successfulLandings: Int,
-    @SerializedName("url")
-    val url: String,
-    @SerializedName("weight_kg")
-    val weightKg: Int,
-    @SerializedName("weight_lbs")
-    val weightLbs: Int,
+    val shipType: String?,
     @SerializedName("year_built")
-    val yearBuilt: Int
-)
+    val yearBuilt: Int?
+){
+
+
+}

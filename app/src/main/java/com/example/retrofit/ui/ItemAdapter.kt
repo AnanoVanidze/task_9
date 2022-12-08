@@ -15,7 +15,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
         fun bind(item: Item){
 
             binding.text.text = item.homePort
-            binding.abs.text = item.abs.toString()
+            binding.abs.text = item.active.toString()
         }
 
     }
@@ -37,7 +37,7 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     private val diffCallBack = object : DiffUtil.ItemCallback<Item>() {
 
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return true
+            return oldItem == newItem
         }
 
         override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {

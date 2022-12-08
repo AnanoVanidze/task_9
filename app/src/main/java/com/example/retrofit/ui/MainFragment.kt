@@ -5,7 +5,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.retrofit.ApiState
+import com.example.retrofit.Resource
 import com.example.retrofit.databinding.FragmentMainBinding
 import com.example.retrofit.model.Item
 import com.example.retrofit.viewModel.ItemViewModel
@@ -30,19 +30,19 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
         itemViewModel.itemsLivedata.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is ApiState.Success<*> -> {
+                is Resource.Success-> {
                     binding.progressBar.isVisible = false
 
                     itemAdapter.differ.submitList(state.data as MutableList<Item>?)
 
                 }
-                is ApiState.Failure -> {
+                is Resource.Error -> {
 
                     binding.progressBar.isVisible = false
 
-                    Toast.makeText(requireContext(), state.msg, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), state.message, Toast.LENGTH_SHORT).show()
                 }
-                is ApiState.Loading -> {
+                is Resource.Loading-> {
                     binding.progressBar.isVisible = true
 
                 }
@@ -61,6 +61,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
             adapter = itemAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
+
 
     }
 
